@@ -202,14 +202,15 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
         colorPaletteView.pinBottom(to: buttonsSV.topAnchor, 8)
     }
     
-    func didChangeColor(_ color: UIColor) {
+    func changeColor(_ slider: ColorPaletteView) {
         UIView.animate(withDuration: 0.5) {
-            self.view.backgroundColor = color
+            self.view.backgroundColor = slider.chosenColor
         }
     }
     
     @objc
     private func paletteButtonPressed() {
+        colorPaletteView.updateColor(color: self.view.backgroundColor ?? UIColor.systemGray6)
         colorPaletteView.isHidden = !colorPaletteView.isHidden
         let generator = UIImpactFeedbackGenerator(style: .medium)
         generator.impactOccurred()

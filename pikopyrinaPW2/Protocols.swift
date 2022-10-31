@@ -9,5 +9,9 @@ import UIKit
 
 protocol ColorPaletteViewDelegate: AnyObject {
     // protocol allow to get the color from ColorPaletteView every time slides are moved
-    func didChangeColor(_ color: UIColor)
+    func changeColor(_ slider: ColorPaletteView)
+}
+
+protocol ColorSliderViewDelegate: AnyObject {
+    func updateSlider(_ newValue: Float)
 }

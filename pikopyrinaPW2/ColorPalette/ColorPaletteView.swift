@@ -10,6 +10,7 @@ import UIKit
 final class ColorPaletteView: UIView {
     // add delegate to pass the value of chosenColor to controller
     weak var delegate: ColorPaletteViewDelegate?
+    var sliderDelegates: [ColorSliderViewDelegate] = []
     
     private let stackView = UIStackView()
     private(set) var chosenColor: UIColor = .systemGray6
@@ -24,6 +25,21 @@ final class ColorPaletteView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateColor(color: UIColor) {
+        self.chosenColor = color
+        for (index, slider) in sliderDelegates.enumerated() {
+            switch index {
+            case 0:
+                slider.updateSlider(Float(chosenColor.redComponent))
+            case 1:
+                slider.updateSlider(Float(chosenColor.greenComponent))
+            default:
+                slider.updateSlider(Float(chosenColor.blueComponent))
+            }
+        }
+        
+    }
+    
     private func setupView() {
         let redControl = ColorSliderView(colorName: "R", value: Float(chosenColor.redComponent))
         let greenControl = ColorSliderView(colorName: "G", value: Float(chosenColor.greenComponent))
@@ -32,6 +48,8 @@ final class ColorPaletteView: UIView {
         redControl.tag = 0
         greenControl.tag = 1
         blueControl.tag = 2
+        
+        sliderDelegates = [redControl, greenControl, blueControl]
         
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
@@ -76,13 +94,13 @@ final class ColorPaletteView: UIView {
                 alpha: chosenColor.alphaComponent
             )
         }
-        delegate?.didChangeColor(chosenColor)
+        delegate?.changeColor(self)
     }
 }
 
 
 extension ColorPaletteView {
-    private final class ColorSliderView: UIControl {
+    private final class ColorSliderView: UIControl, ColorSliderViewDelegate {
         private let slider = UISlider()
         private let colorLabel = UILabel()
         
@@ -99,6 +117,11 @@ extension ColorPaletteView {
             slider.addTarget(self, action: #selector(sliderMoved(_:)), for: .touchDragInside)
         }
         
+        func updateSlider(_ newValue: Float) {
+            self.value = newValue
+            slider.value = self.value
+        }
+        
         @available(*, unavailable)
         required init?(coder:NSCoder) {
             fatalError("init(coder:) has not been implemented")
@@ -110,7 +133,7 @@ extension ColorPaletteView {
             stackView.spacing = 8
             
             addSubview(stackView)
-            stackView.pin(to: self, [.left: 12, .top: 12, .right: 12, .bottom: 12])
+            stackView.pin(to: self, [.left: 12, .top: 8, .right: 12, .bottom: 8])
         }
                              
         @objc
