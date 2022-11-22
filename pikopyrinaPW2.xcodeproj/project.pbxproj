@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38009F03292C03080063BA0E /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38009F02292C03080063BA0E /* NotesViewController.swift */; };
+		38009F05292C1AB70063BA0E /* ShortNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38009F04292C1AB70063BA0E /* ShortNote.swift */; };
+		38009F07292C1AED0063BA0E /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38009F06292C1AEC0063BA0E /* NoteCell.swift */; };
+		38009F09292C385F0063BA0E /* AddNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38009F08292C385E0063BA0E /* AddNoteCell.swift */; };
 		38525BA228F5827C0018FA01 /* View_Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38525BA128F5827C0018FA01 /* View_Pin.swift */; };
 		38C234EA290C543E0073A4C1 /* ColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C234E9290C543E0073A4C1 /* ColorPaletteView.swift */; };
 		38D2BF3F290C82230012753F /* UIColor_RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D2BF3E290C82230012753F /* UIColor_RGBA.swift */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38009F02292C03080063BA0E /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		38009F04292C1AB70063BA0E /* ShortNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortNote.swift; sourceTree = "<group>"; };
+		38009F06292C1AEC0063BA0E /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		38009F08292C385E0063BA0E /* AddNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteCell.swift; sourceTree = "<group>"; };
 		38525BA128F5827C0018FA01 /* View_Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_Pin.swift; sourceTree = "<group>"; };
 		38C234E9290C543E0073A4C1 /* ColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteView.swift; sourceTree = "<group>"; };
 		38D2BF3E290C82230012753F /* UIColor_RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_RGBA.swift; sourceTree = "<group>"; };
@@ -48,17 +56,10 @@
 		38D2BF3A290C815E0012753F /* ColorPalette */ = {
 			isa = PBXGroup;
 			children = (
+				38D2BF3E290C82230012753F /* UIColor_RGBA.swift */,
 				38C234E9290C543E0073A4C1 /* ColorPaletteView.swift */,
 			);
 			path = ColorPalette;
-			sourceTree = "<group>";
-		};
-		38D2BF3D290C81F10012753F /* ColorRGBA */ = {
-			isa = PBXGroup;
-			children = (
-				38D2BF3E290C82230012753F /* UIColor_RGBA.swift */,
-			);
-			path = ColorRGBA;
 			sourceTree = "<group>";
 		};
 		38D4690E28F3723A00E4AF78 = {
@@ -80,7 +81,7 @@
 		38D4691928F3723A00E4AF78 /* pikopyrinaPW2 */ = {
 			isa = PBXGroup;
 			children = (
-				38D2BF3D290C81F10012753F /* ColorRGBA */,
+				38F91463292CBF6D009D9C8A /* Notes */,
 				38D2BF3A290C815E0012753F /* ColorPalette */,
 				38E246B028F5FF3600CEE766 /* Layer */,
 				38D4693228F3829A00E4AF78 /* ViewPin */,
@@ -109,6 +110,17 @@
 				38E246AE28F5F42200CEE766 /* Layer_Shadow.swift */,
 			);
 			path = Layer;
+			sourceTree = "<group>";
+		};
+		38F91463292CBF6D009D9C8A /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				38009F02292C03080063BA0E /* NotesViewController.swift */,
+				38009F06292C1AEC0063BA0E /* NoteCell.swift */,
+				38009F08292C385E0063BA0E /* AddNoteCell.swift */,
+				38009F04292C1AB70063BA0E /* ShortNote.swift */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +195,13 @@
 			files = (
 				38E246AF28F5F42200CEE766 /* Layer_Shadow.swift in Sources */,
 				38E246AD28F5D14500CEE766 /* WelcomeViewController.swift in Sources */,
+				38009F07292C1AED0063BA0E /* NoteCell.swift in Sources */,
 				38525BA228F5827C0018FA01 /* View_Pin.swift in Sources */,
 				38D4691B28F3723A00E4AF78 /* AppDelegate.swift in Sources */,
+				38009F05292C1AB70063BA0E /* ShortNote.swift in Sources */,
 				38D2BF3F290C82230012753F /* UIColor_RGBA.swift in Sources */,
+				38009F09292C385F0063BA0E /* AddNoteCell.swift in Sources */,
+				38009F03292C03080063BA0E /* NotesViewController.swift in Sources */,
 				38C234EA290C543E0073A4C1 /* ColorPaletteView.swift in Sources */,
 				38D4691D28F3723A00E4AF78 /* SceneDelegate.swift in Sources */,
 				38D2BF41290C89B40012753F /* Protocols.swift in Sources */,

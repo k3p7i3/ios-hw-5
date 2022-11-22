@@ -15,3 +15,9 @@ protocol ColorPaletteViewDelegate: AnyObject {
 protocol ColorSliderViewDelegate: AnyObject {
     func updateSlider(_ newValue: Float)
 }
+
+protocol AddNoteDelegate: AnyObject {
+    func newNoteAdded(note: ShortNote)
+}
+
+

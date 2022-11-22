@@ -17,6 +17,7 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
     private let buttonsSV = UIStackView()
     
     private let colorPaletteView = ColorPaletteView()
+    private let notesViewController = NotesViewController()
     
     //  IncrementButton functions
     
@@ -57,11 +58,11 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
                 duration: 0.5,
                 options: .transitionFlipFromTop,
                 animations: {
-                    self.updateUI()
+                    self.updateClicker()
                 }
             )
         } else {
-            updateUI()
+            updateClicker()
         }
         
     }
@@ -158,6 +159,12 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
         return button
     }
     
+    private func updateClicker() {
+        // update counter label and comment label
+        valueLabel.text = "\(value)"
+        updateCommentLabel()
+    }
+    
     private func setupMenuButtons() {
         let colorsButton = makeMenuButton(title: "🎨")
         colorsButton.addTarget(
@@ -167,6 +174,12 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
         )
         
         let notesButton = makeMenuButton(title: "📝")
+        notesButton.addTarget(
+            self,
+            action: #selector(notesButtonPressed),
+            for: .touchUpInside
+        )
+        
         let newsButton = makeMenuButton(title: "📰")
         
         for button in [colorsButton, notesButton, newsButton] {
@@ -216,6 +229,18 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
         generator.impactOccurred()
     }
     
+    // function for notes button
+    
+    @objc
+    private func notesButtonPressed() {
+        notesViewController.modalPresentationStyle = .pageSheet
+        
+        if let sheets = notesViewController.sheetPresentationController {
+            sheets.detents = [.medium(), .large()]
+        }
+        present(notesViewController, animated: true, completion: nil)
+    }
+    
     // common functions for whole view
     
     private func setupView() {
@@ -227,12 +252,6 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
         setupCommentLabel()
         setupMenuButtons()
         setupColorControlSV()
-    }
-    
-    private func updateUI() {
-        // update counter label and comment label
-        valueLabel.text = "\(value)"
-        updateCommentLabel()
     }
     
     override func viewDidLoad() {
