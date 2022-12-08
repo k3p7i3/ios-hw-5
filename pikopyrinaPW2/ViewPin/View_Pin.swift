@@ -119,6 +119,18 @@ extension UIView {
         constraint.isActive = true
         return constraint
     }
+    
+    @discardableResult
+    func pinBottom(to superview: UIView, lessOrEqual const: Int) -> NSLayoutConstraint {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = bottomAnchor.constraint(
+            lessThanOrEqualTo: superview.bottomAnchor,
+            constant: CGFloat(const * -1)
+        )
+        constraint.isActive = true
+
+        return constraint
+    }
 
     @discardableResult
     func pinCenterX(to superview: UIView, _ const: Int = 0) -> NSLayoutConstraint {
@@ -227,6 +239,15 @@ extension UIView {
     func setHeight(_ const: Int) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         let constraint = heightAnchor.constraint(equalToConstant: CGFloat(const))
+        constraint.isActive = true
+        
+        return constraint
+    }
+    
+    @discardableResult
+    func setHeight(_ const: CGFloat) -> NSLayoutConstraint {
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraint = heightAnchor.constraint(equalToConstant: const)
         constraint.isActive = true
         
         return constraint

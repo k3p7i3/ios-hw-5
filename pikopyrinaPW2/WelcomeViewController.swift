@@ -19,6 +19,25 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
     private let colorPaletteView = ColorPaletteView()
     private let notesViewController = NotesViewController()
     
+    
+    // common functions for whole view
+    
+    private func setupView() {
+        view.backgroundColor = .systemGray6
+        
+        //setup all needed UI components
+        setupIncrementButton()
+        setupValueLabel()
+        setupCommentLabel()
+        setupMenuButtons()
+        setupColorControlSV()
+    }
+    
+    override func viewDidLoad() {
+        setupView()
+    }
+    
+    
     //  IncrementButton functions
     
     private func setupIncrementButton() {
@@ -181,6 +200,11 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
         )
         
         let newsButton = makeMenuButton(title: "📰")
+        newsButton.addTarget(
+            self,
+            action: #selector(newsButtonPressed),
+            for: .touchUpInside
+        )
         
         for button in [colorsButton, notesButton, newsButton] {
             buttonsSV.addArrangedSubview(button)
@@ -229,7 +253,7 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
         generator.impactOccurred()
     }
     
-    // function for notes button
+    // method for notes button
     
     @objc
     private func notesButtonPressed() {
@@ -241,21 +265,16 @@ final class WelcomeViewController: UIViewController, ColorPaletteViewDelegate{
         present(notesViewController, animated: true, completion: nil)
     }
     
-    // common functions for whole view
     
-    private func setupView() {
-        view.backgroundColor = .systemGray6
-        
-        //setup all needed UI components
-        setupIncrementButton()
-        setupValueLabel()
-        setupCommentLabel()
-        setupMenuButtons()
-        setupColorControlSV()
+    
+    // news controller method
+    
+    @objc
+    private func newsButtonPressed() {
+        let newsListViewController = NewsListViewController()
+        navigationController?.pushViewController(newsListViewController, animated: true)
     }
     
-    override func viewDidLoad() {
-        setupView()
-    }
+
     
 }
